@@ -18,7 +18,7 @@
 #include <string>
 #include <fcntl.h>
 #include "nativehelper/scoped_utf_chars.h"
-#include "Tracer.h"
+#include "tracer.h"
 #include "Logging.h"
 #include "Support.h"
 
@@ -56,7 +56,9 @@ namespace Tracer {
         }
         struct dirent *dent;
         pid_t tid;
+        //读取目录下的子目录
         while ((dent = readdir(taskDir)) != nullptr) {
+            //目录名是线程名
             tid = atoi(dent->d_name);
             if (tid <= 0) {
                 continue;

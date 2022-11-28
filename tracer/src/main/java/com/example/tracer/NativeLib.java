@@ -12,6 +12,8 @@ import android.os.SystemClock;
 import androidx.annotation.Keep;
 import androidx.annotation.RequiresApi;
 
+import com.bytedance.android.bytehook.ByteHook;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
@@ -23,6 +25,7 @@ public class NativeLib {
     // Used to load the 'tracer' library on application startup.
     static {
         System.loadLibrary("tracer");
+        ByteHook.init();
     }
 
     private static final String TAG = "SignalAnrTracer";
